@@ -1262,23 +1262,23 @@ const getMessageStatus = (message) => {
                               "Document.pdf"}
                           </p>
 
-                          <a
-                            href={`http://localhost:3000/api/messages/download-pdf/${message._id}`}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="
-                              inline-flex
-                              items-center
-                              gap-1
-                              mt-1
-                              text-xs
-                              text-cyan-300
-                              hover:text-cyan-200
-                            "
-                            onClick={(event) =>
-                              event.stopPropagation()
-                            }
-                          >
+                         <a
+  href={`${import.meta.env.VITE_API_URL}/api/messages/download-pdf/${message._id}`}
+  target="_blank"
+  rel="noreferrer"
+  className="
+    inline-flex
+    items-center
+    gap-1
+    mt-1
+    text-xs
+    text-cyan-300
+    hover:text-cyan-200
+  "
+  onClick={(event) =>
+    event.stopPropagation()
+  }
+>
                             <DownloadIcon className="w-3.5 h-3.5" />
                             Download
                           </a>

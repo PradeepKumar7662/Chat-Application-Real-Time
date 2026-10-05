@@ -1263,7 +1263,7 @@ const getMessageStatus = (message) => {
                           </p>
 
                          <a
-  href={`${import.meta.env.VITE_API_URL}/api/messages/download-pdf/${message._id}`}
+  href={`${import.meta.env.VITE_API_URL}/messages/download-pdf/${message._id}`}
   target="_blank"
   rel="noreferrer"
   className="

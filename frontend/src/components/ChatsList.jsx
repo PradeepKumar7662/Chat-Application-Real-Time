@@ -128,7 +128,8 @@ useEffect(() => {
     <>
       {/* CHAT LIST */}
       <div className="space-y-3">
-        {chats.map((chat) => (
+      {Array.isArray(chats) &&
+        chats.map((chat) => (
           <div
             key={chat._id}
             onClick={() => setSelectedUser(chat)}

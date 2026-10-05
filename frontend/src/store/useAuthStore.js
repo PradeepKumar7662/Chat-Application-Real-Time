@@ -160,11 +160,11 @@ export const useAuthStore = create((set, get) => ({
       );
     });
 
-    socket.on("getOnlineUsers", (userIds) => {
-      set({
-        onlineUsers: userIds,
-      });
-    });
+   socket.on("getOnlineUsers", (userIds) => {
+  set({
+    onlineUsers: Array.isArray(userIds) ? userIds : [],
+  });
+});
 
     socket.on("disconnect", (reason) => {
       console.log(

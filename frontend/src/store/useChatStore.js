@@ -52,9 +52,9 @@ export const useChatStore = create((set, get) => ({
         "/messages/contacts"
       );
 
-      set({
-        allContacts: res.data,
-      });
+    set({
+  allContacts: Array.isArray(res.data) ? res.data : [],
+});
     } catch (error) {
       toast.error(
         error.response?.data?.message ||
@@ -99,13 +99,13 @@ export const useChatStore = create((set, get) => ({
     set({ isUsersLoading: true });
 
     try {
-      const res = await axiosInstance.get(
-        "/messages/chats"
-      );
+   const res = await axiosInstance.get("/messages/chats");
 
-      set({
-        chats: res.data,
-      });
+console.log("CHAT PARTNERS RESPONSE:", res.data);
+
+set({
+  chats: Array.isArray(res.data) ? res.data : [],
+});
     } catch (error) {
       toast.error(
         error.response?.data?.message ||

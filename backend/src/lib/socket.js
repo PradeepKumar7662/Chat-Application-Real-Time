@@ -1,17 +1,17 @@
 import { Server } from "socket.io";
 import http from "http";
 import express from "express";
+
 import { ENV } from "./env.js";
 import { socketAuthMiddleware } from "../middleware/socket.auth.middleware.js";
 import Message from "../models/Message.js";
 
 const app = express();
-
 const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: [ENV.CLIENT_URL],
+    origin: ENV.CLIENT_URL,
     credentials: true,
   },
 });
@@ -19,22 +19,24 @@ const io = new Server(server, {
 // Apply authentication middleware to all socket connections
 io.use(socketAuthMiddleware);
 
-// Check if user is online
+// Store online users
+const userSocketMap = {}; // { userId: socketId }
+
+// Get receiver socket ID
 export function getReceiverSocketId(userId) {
   return userSocketMap[userId];
 }
 
-// Store online users
-const userSocketMap = {}; // { userId: socketId }
-
+// Socket connection
 io.on("connection", (socket) => {
-  console.log("A user connected", socket.user.fullName);
+  console.log("A user connected:", socket.user.fullName);
 
   const userId = socket.userId;
 
+  // Store user's socket ID
   userSocketMap[userId] = socket.id;
 
-  // Send online users
+  // Send online users to everyone
   io.emit("getOnlineUsers", Object.keys(userSocketMap));
 
   // ---------------------------------------------
@@ -202,7 +204,7 @@ io.on("connection", (socket) => {
 
   socket.on("disconnect", () => {
     console.log(
-      "A user disconnected",
+      "A user disconnected:",
       socket.user.fullName
     );
 

@@ -1,4 +1,4 @@
-# 💬 Chatify — Full-Stack Real-Time Chat Application
+# 💬— Full-Stack Real-Time Chat Application
 
 <p align="center">
   A modern, secure and responsive real-time chat application built with React, Node.js, Express, MongoDB and Socket.IO.

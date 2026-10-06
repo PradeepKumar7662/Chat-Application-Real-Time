@@ -12,7 +12,7 @@
 
 ## 🚀 About the Project
 
-**Chatify** is a full-stack real-time messaging application designed to provide a smooth and modern chat experience similar to popular messaging platforms.
+**Chat Application** is a full-stack real-time messaging application designed to provide a smooth and modern chat experience similar to popular messaging platforms.
 
 The application includes secure authentication, real-time messaging, online/offline presence, message reactions, message deletion, image and PDF sharing, message delivery/read status, responsive mobile UI and more.
 
